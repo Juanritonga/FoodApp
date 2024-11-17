@@ -1,0 +1,81 @@
+/* General styles */
+.container-about {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  
+  .profile {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .profile-img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ddd;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .profile-img:hover {
+    transform: scale(1.1);
+  }
+  
+  .name {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  
+  .position {
+    font-size: 1.2rem;
+    color: #777;
+  }
+  
+  .bio {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .contact-list li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  .contact-list li i {
+    margin-right: 10px;
+    color: #007bff;
+  }
+  
+  .social a {
+    font-size: 1.5rem;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .social a:hover {
+    color: #007bff;
+  }
+  
+  /* Responsiveness */
+  @media (max-width: 768px) {
+    .profile-img {
+      width: 120px;
+      height: 120px;
+    }
+  
+    .name {
+      font-size: 1.5rem;
+    }
+  
+    .position {
+      font-size: 1rem;
+    }
+  
+    .bio {
+      font-size: 0.9rem;
+    }
+  }
+  

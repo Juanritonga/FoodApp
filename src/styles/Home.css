@@ -1,0 +1,63 @@
+/* General Styling */
+.App {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa; 
+  }
+
+  
+  /* Carousel Styling */
+  .carousel-item img {
+    height: 400px; /* Adjust height for uniformity */
+    object-fit: cover; /* Ensure image fits nicely */
+  }
+  
+  .carousel-caption h5 {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .carousel-caption p {
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 0;
+  }
+
+  /* Home.css */
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);  /* Memperbesar sedikit kartu */
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);  /* Memberikan bayangan */
+}
+
+.card:active {
+  transform: scale(0.98);  /* Memberikan efek "click" dengan mengecilkan kartu */
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);  /* Bayangan lebih kecil saat klik */
+}
+
+
+  
+  /* Mobile Adjustments */
+  @media (max-width: 768px) {
+    .carousel-caption h5 {
+      font-size: 1.5rem;
+    }
+  
+    .carousel-caption p {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .carousel-item img {
+      height: 300px; /* Smaller height for small screens */
+    }
+  }
+  
