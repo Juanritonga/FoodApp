@@ -79,3 +79,87 @@
     margin-right: 0;
   }
 }
+
+/* Header styles */
+.search {
+  position: relative;
+  max-width: 300px; /* Batasi lebar input pencarian */
+  width: 100%;
+  z-index: 10; /* Pastikan dropdown berada di atas konten lain */
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Agar container search memenuhi ruang */
+}
+
+.search-input {
+  padding-left: 40px; /* Memberikan ruang untuk ikon pencarian */
+  border-radius: 30px;
+  height: 40px;
+  font-size: 14px;
+  width: 100%; /* Memastikan input mengambil seluruh lebar kontainer */
+  box-sizing: border-box; /* Menghindari overflow */
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  right: 75px;
+  transform: translateY(-50%);
+  color: #6c757d;
+  font-size: 16px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  width: 100%; /* Menjamin dropdown mengambil lebar input */
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background-color: white;
+  z-index: 1000; /* Menjamin dropdown selalu berada di atas elemen lainnya */
+  max-height: 300px; /* Membatasi tinggi dropdown agar tidak terlalu panjang */
+  overflow-y: auto; /* Menambahkan scroll jika item terlalu banyak */
+}
+
+.results li {
+  padding: 10px 15px;
+  cursor: pointer;
+  white-space: nowrap; /* Menghindari teks hasil pencarian yang terlalu panjang */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Menambahkan "..." jika teks terlalu panjang */
+}
+
+.results li:hover {
+  background-color: #f8f9fa;
+}
+
+.loading, .no-results {
+  padding: 10px;
+  font-size: 14px;
+}
+
+.loading {
+  color: #007bff;
+}
+
+.no-results {
+  color: #dc3545;
+  text-align: center;
+}
+
+@media (max-width: 576px) {
+  .search {
+    max-width: 100%;
+  }
+
+  .search-input {
+    font-size: 12px;
+    padding-left: 35px;
+  }
+
+  .search-icon {
+    font-size: 14px;
+  }
+}

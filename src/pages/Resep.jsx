@@ -22,8 +22,8 @@ const Resep = () => {
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "a95412fba6mshd56e0b9638904d8p1c9b87jsn09d7ebb659eb",
-        "x-rapidapi-host": "tasty.p.rapidapi.com",
+        'x-rapidapi-key': '3c63ba124amshea9cc3d9dc74767p1a6d69jsn39ac4d4cdcc8',
+		'x-rapidapi-host': 'tasty.p.rapidapi.com',
       },
     };
 

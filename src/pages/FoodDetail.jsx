@@ -1,4 +1,4 @@
-import  { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../styles/Detail.css";
 
@@ -9,11 +9,11 @@ function FoodDetail() {
   const [error, setError] = useState(null);
 
   const getFoodDetail = useCallback(async () => {
-    const url = `https://tasty.p.rapidapi.com/recipes/get-more-info?id=${id}`;
+    const url = `https://tasty.p.rapidapi.com/recipes/get-more-info?id=${id}`; // Fixed template literal
     const options = {
       method: "GET",
       headers: {
-        "x-rapidapi-key": "a95412fba6mshd56e0b9638904d8p1c9b87jsn09d7ebb659eb",
+        "x-rapidapi-key": "3c63ba124amshea9cc3d9dc74767p1a6d69jsn39ac4d4cdcc8",
         "x-rapidapi-host": "tasty.p.rapidapi.com",
       },
     };
@@ -24,6 +24,7 @@ function FoodDetail() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const result = await response.json();
+      console.log(result); // tampilkan hasil resep atau update state untuk menampilkan detail
       setFood(result);
       setError(null);
     } catch (error) {
@@ -68,144 +69,121 @@ function FoodDetail() {
 
   return (
     <div className="container food-detail mt-4">
-  <div className="row">
-    {/* Nama resep */}
-    <div className="col-12 text-center">
-      <h1 className="display-4">{food.name}</h1>
-    </div>
-  </div>
-
-  <div className="row">
-    {/* Thumbnail */}
-    {food.thumbnail_url && (
-      <div className="col-12 text-center mb-4">
-        <img
-          src={food.thumbnail_url}
-          alt={`${food.name} Thumbnail`}
-          className="img-fluid rounded-circle shadow"
-          style={{ width: '150px', height: '150px', objectFit: 'cover' }}
-        />
+      <div className="row">
+        {/* Nama Resep */}
+        <div className="col-12 text-center">
+          <h1 className="display-4">{food.name}</h1>
+        </div>
       </div>
-    )}
-  </div>
 
-  <div className="row">
-    {/* Gambar utama */}
-    {food.image && (
-      <div className="col-12 text-center mb-4">
-        <img
-          src={food.image}
-          alt={food.name}
-          className="img-fluid rounded shadow"
-          style={{ maxHeight: '400px', objectFit: 'cover' }}
-        />
+      <div className="row">
+        {/* Thumbnail */}
+        {food.thumbnail_url && (
+          <div className="col-12 text-center mb-4">
+            <img
+              src={food.thumbnail_url}
+              alt={`${food.name} Thumbnail`}
+              className="img-fluid rounded-circle shadow"
+              style={{ width: "150px", height: "150px", objectFit: "cover" }}
+            />
+          </div>
+        )}
       </div>
-    )}
-  </div>
 
-  <div className="row">
-    {/* Deskripsi */}
-    {food.description && (
-      <div className="col-12 text-center mb-3">
-        <p className="text-muted">{food.description}</p>
+      <div className="row">
+        {/* Gambar Utama */}
+        {food.image && (
+          <div className="col-12 text-center mb-4">
+            <img
+              src={food.image}
+              alt={food.name}
+              className="img-fluid rounded shadow"
+              style={{ maxHeight: "400px", objectFit: "cover" }}
+            />
+          </div>
+        )}
       </div>
-    )}
-  </div>
 
-  <div className="row">
-  {/* Instruksi */}
-  <div className="col-md-6 mb-4">
-    <h2 className="h5 mb-3 text-primary">Instructions</h2>
-    {food.instructions && food.instructions.length > 0 ? (
-      <ol className="list-group list-group-numbered shadow-sm rounded">
-        {food.instructions.map((instruction, index) => (
-          <li key={index} className="list-group-item border-0">
-            {instruction.display_text}
-          </li>
-        ))}
-      </ol>
-    ) : (
-      <p className="text-danger">No instructions available.</p>
-    )}
-  </div>
-
-  {/* User Ratings */}
-  <div className="col-md-6 mb-4">
-    <h2 className="h5 mb-3 text-primary">User Ratings</h2>
-    {food.user_ratings ? (
-      <div className="p-3 shadow-sm rounded bg-light">
-        <p className="mb-2">
-          <strong className="text-success">Positive Reviews:</strong>{" "}
-          {food.user_ratings.count_positive || 0}
-        </p>
-        <p className="mb-2">
-          <strong className="text-danger">Negative Reviews:</strong>{" "}
-          {food.user_ratings.count_negative || 0}
-        </p>
-        <p className="mb-0">
-          <strong className="text-primary">Overall Score:</strong>{" "}
-          {food.user_ratings.score ? `${food.user_ratings.score}/1` : "N/A"}
-        </p>
+      <div className="row">
+        {/* Deskripsi */}
+        {food.description && (
+          <div className="col-12 text-center mb-3">
+            <p className="text-muted">{food.description}</p>
+          </div>
+        )}
       </div>
-    ) : (
-      <p className="text-danger">No user ratings available.</p>
-    )}
-  </div>
-</div>
 
-
-
-  <div className="row">
-    {/* Kandungan Nutrisi */}
-    {food.nutrition && Object.keys(food.nutrition).length > 0 && (
-      <div className="col-12 mb-4">
-        <h2 className="h5">Nutrition Information</h2>
-        <div className="table-responsive">
-          <table className="table table-bordered">
-            <thead>
-              <tr>
-                <th>Component</th>
-                <th>Amount</th>
-              </tr>
-            </thead>
-            <tbody>
-              {Object.entries(food.nutrition).map(([key, value], index) => (
-                <tr key={index}>
-                  <td>{key}</td>
-                  <td>{value}</td>
-                </tr>
+      <div className="row">
+        {/* Instruksi */}
+        <div className="col-md-6 mb-4">
+          <h2 className="h5 mb-3 text-primary">Instructions</h2>
+          {food.instructions && food.instructions.length > 0 ? (
+            <ol className="list-group list-group-numbered shadow-sm rounded">
+              {food.instructions.map((instruction, index) => (
+                <li key={index} className="list-group-item border-0">
+                  {instruction.display_text}
+                </li>
               ))}
-            </tbody>
-          </table>
+            </ol>
+          ) : (
+            <p className="text-danger">No instructions available.</p>
+          )}
+        </div>
+
+        {/* User Ratings */}
+        <div className="col-md-6 mb-4">
+          <h2 className="h5 mb-3 text-primary">User Ratings</h2>
+          {food.user_ratings ? (
+            <div className="p-3 shadow-sm rounded bg-light">
+              <p className="mb-2">
+                <strong className="text-success">Positive Reviews:</strong>{" "}
+                {food.user_ratings.count_positive || 0}
+              </p>
+              <p className="mb-2">
+                <strong className="text-danger">Negative Reviews:</strong>{" "}
+                {food.user_ratings.count_negative || 0}
+              </p>
+              <p className="mb-0">
+                <strong className="text-primary">Overall Score:</strong>{" "}
+                {food.user_ratings.score
+                  ? `${food.user_ratings.score}/1`
+                  : "N/A"}
+              </p>
+            </div>
+          ) : (
+            <p className="text-danger">No user ratings available.</p>
+          )}
         </div>
       </div>
-    )}
-  </div>
 
-  <div className="row">
-    {/* Video Resep */}
-    {food.video && (
-      <div className="col-12 text-center mt-4">
-        <h2 className="h5">Watch Video</h2>
-        <div className="ratio ratio-16x9">
-          <iframe
-            src={food.video}
-            title="Recipe Video"
-            allowFullScreen
-            className="rounded shadow"
-          ></iframe>
-        </div>
+      <div className="row">
+        {/* Kandungan Nutrisi */}
+        {food.nutrition && Object.keys(food.nutrition).length > 0 && (
+          <div className="col-12 mb-4">
+            <h2 className="h5">Nutrition Information</h2>
+            <div className="table-responsive">
+              <table className="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Component</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {Object.entries(food.nutrition).map(([key, value], index) => (
+                    <tr key={index}>
+                      <td>{key}</td>
+                      <td>{value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
       </div>
-    )}
-  </div>
-</div>
-
-
-
+    </div>
   );
 }
-  
-export default FoodDetail;
 
-      
-      
+export default FoodDetail;
