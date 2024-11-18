@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "../styles/About.css"; 
-import personal from "../assets/personal.jpg"; // Import the image
+import personal from "../assets/personal.jpg";
 
 function App() {
   return (

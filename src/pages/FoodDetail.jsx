@@ -9,7 +9,7 @@ function FoodDetail() {
   const [error, setError] = useState(null);
 
   const getFoodDetail = useCallback(async () => {
-    const url = `https://tasty.p.rapidapi.com/recipes/get-more-info?id=${id}`; // Fixed template literal
+    const url = `https://tasty.p.rapidapi.com/recipes/get-more-info?id=${id}`;
     const options = {
       method: "GET",
       headers: {
@@ -24,7 +24,7 @@ function FoodDetail() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const result = await response.json();
-      console.log(result); // tampilkan hasil resep atau update state untuk menampilkan detail
+      console.log(result);
       setFood(result);
       setError(null);
     } catch (error) {
@@ -70,14 +70,12 @@ function FoodDetail() {
   return (
     <div className="container food-detail mt-4">
       <div className="row">
-        {/* Nama Resep */}
         <div className="col-12 text-center">
           <h1 className="display-4">{food.name}</h1>
         </div>
       </div>
 
       <div className="row">
-        {/* Thumbnail */}
         {food.thumbnail_url && (
           <div className="col-12 text-center mb-4">
             <img
@@ -91,7 +89,6 @@ function FoodDetail() {
       </div>
 
       <div className="row">
-        {/* Gambar Utama */}
         {food.image && (
           <div className="col-12 text-center mb-4">
             <img
@@ -105,7 +102,6 @@ function FoodDetail() {
       </div>
 
       <div className="row">
-        {/* Deskripsi */}
         {food.description && (
           <div className="col-12 text-center mb-3">
             <p className="text-muted">{food.description}</p>
@@ -114,7 +110,6 @@ function FoodDetail() {
       </div>
 
       <div className="row">
-        {/* Instruksi */}
         <div className="col-md-6 mb-4">
           <h2 className="h5 mb-3 text-primary">Instructions</h2>
           {food.instructions && food.instructions.length > 0 ? (
@@ -130,7 +125,6 @@ function FoodDetail() {
           )}
         </div>
 
-        {/* User Ratings */}
         <div className="col-md-6 mb-4">
           <h2 className="h5 mb-3 text-primary">User Ratings</h2>
           {food.user_ratings ? (
@@ -157,7 +151,6 @@ function FoodDetail() {
       </div>
 
       <div className="row">
-        {/* Kandungan Nutrisi */}
         {food.nutrition && Object.keys(food.nutrition).length > 0 && (
           <div className="col-12 mb-4">
             <h2 className="h5">Nutrition Information</h2>

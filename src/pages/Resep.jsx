@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "../styles/Resep.css"; // Pastikan file CSS tambahan diimport
+import "../styles/Resep.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -8,22 +8,21 @@ const Resep = () => {
   const [food, setFood] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1); // State untuk halaman saat ini
-  const [totalPages, setTotalPages] = useState(0); // Total halaman
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   const navigate = useNavigate();
 
-  // Memperbaiki handleCardClick untuk menerima ID yang benar
   const handleCardClick = (id) => {
     navigate(`/food/${id}`);
   };
 
   const getFood = async () => {
-    const url = "https://tasty.p.rapidapi.com/recipes/list?from=${(currentPage - 1) * 9}&size=9"; // Sesuaikan URL dengan halaman
+    const url = `https://tasty.p.rapidapi.com/recipes/list?from=${(currentPage - 1) * 9}&size=9`;
     const options = {
       method: "GET",
       headers: {
         'x-rapidapi-key': '3c63ba124amshea9cc3d9dc74767p1a6d69jsn39ac4d4cdcc8',
-		'x-rapidapi-host': 'tasty.p.rapidapi.com',
+        'x-rapidapi-host': 'tasty.p.rapidapi.com',
       },
     };
 
@@ -31,7 +30,7 @@ const Resep = () => {
       const response = await fetch(url, options);
       const result = await response.json();
       setFood(result.results);
-      setTotalPages(Math.ceil(result.count / 9)); // Menentukan total halaman
+      setTotalPages(Math.ceil(result.count / 9));
     } catch (error) {
       setError("Gagal memuat data. Silakan coba lagi.");
       console.error(error);
@@ -40,7 +39,6 @@ const Resep = () => {
     }
   };
 
-  // Memanggil getFood setiap kali halaman berubah
   useEffect(() => {
     getFood();
   }, [currentPage]);
@@ -76,9 +74,8 @@ const Resep = () => {
                       {item.nutrition?.calories || "N/A"} Calories
                     </span>
                   </div>
-                  {/* Menggunakan tombol "Lihat Resep" untuk navigasi */}
                   <button
-                    onClick={() => handleCardClick(item.id)} // Memanggil handleCardClick dengan id item
+                    onClick={() => handleCardClick(item.id)}
                     className="btn btn-primary"
                   >
                     Lihat Resep
@@ -90,7 +87,6 @@ const Resep = () => {
         </div>
       )}
 
-      {/* Pagination */}
       <div className="pagination-container">
         <button
           className="pagination-button"

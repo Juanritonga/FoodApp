@@ -28,7 +28,7 @@ const Footer = () => {
               </div>
               <div className="col-md-2">
                 <h6 className="text-uppercase font-weight-bold">
-                  <a href="about" className="text-white">
+                  <a href="/about" className="text-white">
                     About Me
                   </a>
                 </h6>

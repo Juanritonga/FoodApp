@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [food, setFood] = useState([]);
-  const [loading, setLoading] = useState(true); // State untuk loading
-  const [error, setError] = useState(null); // State untuk error
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleCardClick = (id) => {
@@ -30,7 +30,7 @@ const Home = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const result = await response.json();
-      setFood(result.results || []); // Pastikan result.results ada
+      setFood(result.results || []);
       setLoading(false);
     } catch (error) {
       console.error(error);
@@ -45,7 +45,6 @@ const Home = () => {
 
   return (
     <div className="App ml-0 mr-0">
-      {/* Carousel Section */}
       <div className="container my-5">
         <div className="row justify-content-center">
           <div className="col-md-10">
@@ -110,7 +109,6 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Card Section */}
       <div className="container mt-3 mb-2">
         <h3 className="text-center light my-5">Recommendations for You</h3>
         <div className="row">

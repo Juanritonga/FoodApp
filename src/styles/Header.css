@@ -1,15 +1,12 @@
-/* Styles for header */
-/* Tambahkan ini di bagian .header */
 .header {
   background-color: #f8f9fa;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  position: sticky; /* Membuat header tetap di atas saat scroll */
-  top: 0; /* Menetapkan posisi atas pada halaman */
-  z-index: 1000; /* Menjamin header berada di atas elemen lainnya */
-  width: 100%; /* Membuat header tetap full width */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
 }
-
 
 .logo img {
   max-width: 100px;
@@ -35,7 +32,6 @@
   background-color: #343a40;
 }
 
-/* Custom Search Bar Styles */
 .search input {
   width: 200px;
   border-radius: 25px;
@@ -50,7 +46,6 @@
   font-size: 1rem;
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 767px) {
   .search {
     margin-top: 1rem;
@@ -68,7 +63,6 @@
   }
 }
 
-/* For large screens */
 @media (min-width: 768px) {
   .navbar-nav .nav-item {
     margin-left: 2rem;
@@ -80,27 +74,26 @@
   }
 }
 
-/* Header styles */
 .search {
   position: relative;
-  max-width: 300px; /* Batasi lebar input pencarian */
+  max-width: 300px;
   width: 100%;
-  z-index: 10; /* Pastikan dropdown berada di atas konten lain */
+  z-index: 10;
 }
 
 .search-container {
   display: flex;
   align-items: center;
-  width: 100%; /* Agar container search memenuhi ruang */
+  width: 100%;
 }
 
 .search-input {
-  padding-left: 40px; /* Memberikan ruang untuk ikon pencarian */
+  padding-left: 40px;
   border-radius: 30px;
   height: 40px;
   font-size: 14px;
-  width: 100%; /* Memastikan input mengambil seluruh lebar kontainer */
-  box-sizing: border-box; /* Menghindari overflow */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .search-icon {
@@ -114,21 +107,21 @@
 
 .dropdown-menu {
   position: absolute;
-  width: 100%; /* Menjamin dropdown mengambil lebar input */
+  width: 100%;
   border-radius: 8px;
   border: 1px solid #ddd;
   background-color: white;
-  z-index: 1000; /* Menjamin dropdown selalu berada di atas elemen lainnya */
-  max-height: 300px; /* Membatasi tinggi dropdown agar tidak terlalu panjang */
-  overflow-y: auto; /* Menambahkan scroll jika item terlalu banyak */
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 .results li {
   padding: 10px 15px;
   cursor: pointer;
-  white-space: nowrap; /* Menghindari teks hasil pencarian yang terlalu panjang */
+  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* Menambahkan "..." jika teks terlalu panjang */
+  text-overflow: ellipsis;
 }
 
 .results li:hover {
